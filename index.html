@@ -181,8 +181,14 @@
 
   <script>
     var fireballSize = 22;
-  </script>
-  
+    var fireballSpeed;
+    var getFireballSpeed = function (left) {
+
+      return fireballSpeed = left ? 5 : 2;
+    }
+    getFireballSpeed();
+
+    </script>
   <script src="js/game.js"></script>
 
 </body>
