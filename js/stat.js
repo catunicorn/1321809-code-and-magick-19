@@ -17,11 +17,7 @@ var renderCloud = function (ctx, x, y, color) {
 };
 
 var fetchColor = function (name) {
-  if (name.toLowerCase() == 'вы') {
-    return 'rgba(255, 0, 0, 1)';
-  } else {
-    return 'hsl(240, ' + Math.round(Math.random(100) * 100) + '%, 50%)';
-  }
+  return name.toLowerCase() == 'вы' ? 'rgba(255, 0, 0, 1)' : 'hsl(240, ' + Math.round(Math.random(100) * 100) + '%, 50%)';
 };
 
 var fetchHeight = function (currentHeight, maxHeight) {
@@ -35,18 +31,18 @@ window.renderStatistics = function (ctx, names, times) {
 
   ctx.font = '16px PT Mono';
   ctx.fillText('Ура вы победили!', 120, 40);
-  ctx.fillText('Списки результатов:', 120, 60);
+  ctx.fillText('Список результатов:', 120, 55);
 
   var maxHeight = Math.max(...times);
   for (var i = 0; i < names.length; i++) {
-    var cord = CLOUD_X + BAR_WIDTH * (i + 1) + 50 * i;
+    var cordX = CLOUD_X + BAR_WIDTH * (i + 1) + 50 * i;
     var height = fetchHeight(times[i], maxHeight);
-    var columnCord = BAR_Y + BAR_HEIGHT - height;
+    var columnCordY = BAR_Y + BAR_HEIGHT - height;
 
     ctx.fillStyle = '#000';
-    ctx.fillText(names[i], cord, BAR_HEIGHT + BAR_Y + TEXT_WIDTH);
-    ctx.fillText(Math.ceil(times[i]), cord, columnCord - 5);
+    ctx.fillText(names[i], cordX, BAR_HEIGHT + BAR_Y + TEXT_WIDTH);
+    ctx.fillText(Math.ceil(times[i]), cordX, columnCordY - 5);
     ctx.fillStyle = fetchColor(names[i]);
-    ctx.fillRect(cord, columnCord, BAR_WIDTH, height);
+    ctx.fillRect(cordX, columnCordY, BAR_WIDTH, height);
   }
 }
