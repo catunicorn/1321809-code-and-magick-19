@@ -47,4 +47,4 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = fetchColor(names[i]);
     ctx.fillRect(cordX, columnCordY, BAR_WIDTH, height);
   }
-}
+};
